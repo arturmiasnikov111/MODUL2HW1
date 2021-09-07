@@ -18,7 +18,6 @@ namespace ch
 
         public Result BrokeLogic()
         {
-            var lg = Logger.Instance;
             return new Result(false, "Error occured in class RESULT");
         }
     }
