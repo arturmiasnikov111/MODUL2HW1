@@ -23,9 +23,9 @@ namespace ch
                         break;
                     case 3:
                         Result r = act.BrokeLogic();
-                        if (r.Status == false)
+                        if (!r.Status)
                         {
-                            lg.WriteText($"{Logger.Instance.Error} Action failed by a reason: {r.Error}");
+                            lg.Error($"Action failed by a reason: {r.Error}");
                             break;
                         }
 

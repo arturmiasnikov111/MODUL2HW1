@@ -6,9 +6,6 @@ namespace ch
     public sealed class Logger
     {
         private static readonly Logger _instance = new Logger();
-        private readonly string _error = "[error]";
-        private readonly string _info = "[info]";
-        private readonly string _warning = "[warning]";
 
         static Logger()
         {
@@ -19,32 +16,32 @@ namespace ch
             FilePath = "log.txt";
         }
 
-        public string Text { get; set; }
-        public string FilePath { get; }
-
-        public string Error
-        {
-            get { return _error; }
-        }
-
-        public string Info
-        {
-            get { return _info; }
-        }
-
-        public string Warning
-        {
-            get { return _warning; }
-        }
-
         public static Logger Instance
         {
             get { return _instance; }
         }
 
+        public string Text { get; set; }
+        public string FilePath { get; }
+
+        public void Error(string message)
+        {
+            WriteText("[error] " + message);
+        }
+
+        public void Info(string message)
+        {
+            WriteText("[info] " + message);
+        }
+
+        public void Warning(string message)
+        {
+            WriteText("[warning] " + message);
+        }
+
         public void WriteText(string writeLog)
         {
-            Text += $"{DateTime.Now.ToString()} " + writeLog + "\n";
+            Text += $"{DateTime.Now} " + writeLog + "\n";
         }
 
         public void SaveToFile()
